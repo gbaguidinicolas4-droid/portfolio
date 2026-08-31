@@ -6,8 +6,7 @@ import {
   ArrowLeft,
   ArrowUpRight,
   Mail,
-  Github,
-  Linkedin,
+  
 } from "lucide-react";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 
