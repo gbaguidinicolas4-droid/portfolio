@@ -462,7 +462,7 @@ export default function About() {
                   sm:text-2xl
                 "
               >
-                {item.question || item.title}
+                {item.title}
               </h4>
 
               {/* PLUS */}

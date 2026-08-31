@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import type { Variants } from "framer-motion";
 import {
   Award,
   Database,
@@ -82,8 +83,7 @@ certificateUrl: "/certifications/excel",
 },
   
 ];
-
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: {},
   visible: {
     transition: {
@@ -92,13 +92,12 @@ const containerVariants = {
   },
 };
 
-const cardVariants = {
+const cardVariants: Variants = {
   hidden: {
     opacity: 0,
     y: 50,
     scale: 0.97,
   },
-
   visible: {
     opacity: 1,
     y: 0,

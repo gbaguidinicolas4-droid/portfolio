@@ -1,3 +1,4 @@
+
 "use client";
 
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
@@ -10,7 +11,16 @@ import {
   Sparkles,
 } from "lucide-react";
 
-const journey = [
+type JourneyItemData = {
+  year: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  icon: typeof GraduationCap;
+  side: "left" | "right";
+};
+
+const journey: JourneyItemData[] = [
   {
     year: "2023-2024",
     title: "Baccalauréat",
@@ -31,7 +41,7 @@ const journey = [
     side: "right",
   },
 
-    {
+  {
     year: "Juillet — mi-septembre 2024",
     title: "Stage — Cour constitutionnelle",
     subtitle: "First professional experience.",
@@ -70,9 +80,9 @@ const journey = [
     icon: Award,
     side: "left",
   },
-
-
 ];
+
+
 
 export default function Journey() {
   const sectionRef = useRef<HTMLElement | null>(null);
