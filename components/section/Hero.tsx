@@ -5,8 +5,6 @@ import { motion, useAnimation } from "framer-motion";
 import {
   ArrowDown,
   ArrowUpRight,
-  ChevronLeft,
-  ChevronRight,
   Download,
 } from "lucide-react";
 
@@ -98,6 +96,7 @@ export default function Hero() {
         overflow-hidden
         bg-white
         text-black
+   
       "
     >
       {/* =====================================================
@@ -119,7 +118,7 @@ export default function Hero() {
           sm:px-8
           lg:px-12
           xl:px-16
-          lg:-translate-y-20
+               lg:-translate-y-20
         "
       >
         {/* =================================================
@@ -132,8 +131,8 @@ export default function Hero() {
             flex-1
             items-center
             gap-8
-            lg:grid-cols-[1.05fr_0.95fr]
-            lg:gap-4
+            lg:grid-cols-[1.15fr_0.85fr]
+            lg:gap-8
           "
         >
           {/* =================================================
@@ -150,14 +149,9 @@ export default function Hero() {
               justify-center
             "
           >
-            {/* INTRO */}
-
-           
-
             {/* =================================================
                 MOBILE PROFILE IMAGE
                 Visible uniquement sur mobile
-                et placée juste sous les traits du menu.
             ================================================== */}
 
             <motion.div
@@ -209,7 +203,12 @@ export default function Hero() {
                 />
               </div>
             </motion.div>
-             <motion.div
+
+            {/* =================================================
+                INTRO
+            ================================================== */}
+
+            <motion.div
               initial={{
                 opacity: 0,
                 y: 20,
@@ -230,17 +229,17 @@ export default function Hero() {
                 sm:mb-6
               "
             >
-           <span
-  className="
-    block
-    h-[2px]
-    w-8
-    shrink-0
-    rounded-full
-    bg-[#CBFB45]
-    sm:w-10
-  "
-/>
+              <span
+                className="
+                  block
+                  h-[2px]
+                  w-8
+                  shrink-0
+                  rounded-full
+                  bg-[#CBFB45]
+                  sm:w-10
+                "
+              />
 
               <span
                 className="
@@ -290,45 +289,46 @@ export default function Hero() {
               </motion.h1>
             </div>
 
-           {/* =================================================
-    LAST NAME
-================================================== */}
+            {/* =================================================
+                LAST NAME
+            ================================================== */}
 
-<div
-  className="
-    overflow-visible
-    pb-2
-    sm:pb-3
-  "
->
-  <motion.h1
-    initial={{
-      y: "100%",
-    }}
-    animate={{
-      y: 0,
-    }}
-    transition={{
-      duration: 1,
-      delay: 0.25,
-      ease: [0.22, 1, 0.36, 1],
-    }}
-    className="
-      max-w-full
-      break-words
-      text-[clamp(3.25rem,16vw,8.5rem)]
-      font-semibold
-      leading-[0.95]
-      tracking-[-0.07em]
-      sm:whitespace-nowrap
-      sm:text-[clamp(4rem,8vw,8.5rem)]
-      sm:leading-[0.92]
-    "
-  >
-    <span className="text-[#CBFB45]">Gbaguidi</span>
-    <span className="text-black">.</span>
-  </motion.h1>
-</div>
+            <div
+              className="
+                overflow-visible
+                pb-2
+                sm:pb-3
+              "
+            >
+              <motion.h1
+                initial={{
+                  y: "100%",
+                }}
+                animate={{
+                  y: 0,
+                }}
+                transition={{
+                  duration: 1,
+                  delay: 0.25,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+                className="
+                  max-w-full
+                  break-words
+                  text-[clamp(3.25rem,16vw,8.5rem)]
+                  font-semibold
+                  leading-[0.95]
+                  tracking-[-0.07em]
+                  sm:whitespace-nowrap
+                  sm:text-[clamp(4rem,8vw,8.5rem)]
+                  sm:leading-[0.92]
+                "
+              >
+                <span className="text-[#CBFB45]">Gbaguidi</span>
+                <span className="text-black">.</span>
+              </motion.h1>
+            </div>
+
             {/* =================================================
                 POSITION
             ================================================== */}
@@ -530,12 +530,7 @@ export default function Hero() {
           </div>
 
           {/* =================================================
-              RIGHT SIDE / PHOTO
-
-              IMPORTANT :
-              La photo reste visible sur desktop/tablette.
-              Sur mobile elle est remplacée par le petit
-              cercle placé au-dessus de Nicolas.
+              RIGHT SIDE / DESKTOP VISUAL AREA
           ================================================== */}
 
           <motion.div
@@ -556,13 +551,13 @@ export default function Hero() {
               relative
               hidden
               min-h-[390px]
-              items-end
+              items-center
               justify-center
               sm:flex
               sm:min-h-[500px]
-              lg:min-h-[720px]
-              lg:-translate-x-4
-              xl:-translate-x-8
+              lg:min-h-[600px]
+              lg:translate-y-4
+              xl:translate-y-6
             "
           >
             {/* =================================================
@@ -571,7 +566,7 @@ export default function Hero() {
 
             <motion.div
               animate={{
-                opacity: [0.55, 0.75, 0.55],
+                opacity: [0.45, 0.7, 0.45],
                 scale: [0.96, 1.04, 0.96],
               }}
               transition={{
@@ -583,22 +578,21 @@ export default function Hero() {
                 pointer-events-none
                 absolute
                 left-1/2
-                top-[42%]
-                h-[300px]
-                w-[300px]
+                top-1/2
+                h-[280px]
+                w-[280px]
                 -translate-x-1/2
                 -translate-y-1/2
                 rounded-full
                 bg-[#CBFB45]/20
                 blur-[90px]
-                sm:h-[430px]
-                sm:w-[430px]
-                sm:blur-[110px]
-                lg:top-[38%]
-                lg:h-[620px]
-                lg:w-[620px]
+                sm:h-[380px]
+                sm:w-[380px]
+                sm:blur-[105px]
+                lg:h-[500px]
+                lg:w-[500px]
                 lg:bg-[#CBFB45]/25
-                lg:blur-[145px]
+                lg:blur-[130px]
               "
             />
 
@@ -611,68 +605,638 @@ export default function Hero() {
                 pointer-events-none
                 absolute
                 left-1/2
-                top-[42%]
-                h-[190px]
-                w-[190px]
+                top-1/2
+                h-[160px]
+                w-[160px]
                 -translate-x-1/2
                 -translate-y-1/2
                 rounded-full
                 bg-[#CBFB45]/15
-                blur-[60px]
-                sm:h-[260px]
-                sm:w-[260px]
-                sm:blur-[75px]
-                lg:top-[40%]
-                lg:h-[400px]
-                lg:w-[400px]
+                blur-[55px]
+                sm:h-[220px]
+                sm:w-[220px]
+                sm:blur-[70px]
+                lg:h-[320px]
+                lg:w-[320px]
                 lg:bg-[#CBFB45]/20
-                lg:blur-[100px]
+                lg:blur-[90px]
               "
             />
 
             {/* =================================================
-                PHOTO
+                ANIMATED NETWORK / DATA FLOW
+                Visualisation de la circulation des données
             ================================================== */}
 
-            <div
+            <motion.div
+              initial={{
+                opacity: 0,
+                scale: 0.92,
+              }}
+              animate={{
+                opacity: 1,
+                scale: 1,
+              }}
+              transition={{
+                duration: 1,
+                delay: 0.55,
+                ease: [0.22, 1, 0.36, 1],
+              }}
               className="
                 relative
                 z-10
-                flex
-                h-full
-                w-full
-                items-end
-                justify-center
-                overflow-visible
-                lg:-translate-y-20
-                xl:-translate-y-28
+                h-[700px]
+                w-[390px]
+                sm:h-[790px]
+                sm:w-[460px]
+                lg:h-[860px]
+                lg:w-[540px]
               "
             >
-              <img
-                src="/Profil.jpeg"
-                alt="Nicolas Gbaguidi"
+              <svg
+                viewBox="0 0 540 460"
                 className="
-                  relative
-                  z-10
-                  h-auto
-                  w-auto
-                  max-w-[92%]
-                  object-contain
-                  object-bottom
-                  -grayscale-[20%]
-                  drop-shadow-[0_18px_32px_rgba(203,251,69,0.22)]
-                  transition-transform
-                  duration-700
-
-                  sm:max-h-[600px]
-                  sm:max-w-[80%]
-
-                  lg:max-h-[500px]
-                  lg:max-w-none
-                  rounded-[20px]
+                  h-full
+                  w-full
+                  overflow-visible
                 "
-              />
-            </div>
+              >
+                <defs>
+                  <filter
+                    id="networkGlow"
+                    x="-100%"
+                    y="-100%"
+                    width="300%"
+                    height="300%"
+                  >
+                    <feGaussianBlur
+                      stdDeviation="4"
+                      result="blur"
+                    />
+
+                    <feMerge>
+                      <feMergeNode in="blur" />
+                      <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                  </filter>
+
+                  <filter
+                    id="softNetworkGlow"
+                    x="-100%"
+                    y="-100%"
+                    width="300%"
+                    height="300%"
+                  >
+                    <feGaussianBlur
+                      stdDeviation="9"
+                      result="blur"
+                    />
+
+                    <feMerge>
+                      <feMergeNode in="blur" />
+                      <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                  </filter>
+                </defs>
+
+                {/* =================================================
+                    NETWORK CONNECTIONS
+                ================================================== */}
+
+                <g
+                  fill="none"
+                  stroke="rgba(0,0,0,0.10)"
+                  strokeWidth="1.5"
+                >
+                  <motion.path
+                    d="M270 230 L105 95"
+                    animate={{
+                      opacity: [0.25, 0.65, 0.25],
+                    }}
+                    transition={{
+                      duration: 2.8,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                  />
+
+                  <motion.path
+                    d="M270 230 L435 95"
+                    animate={{
+                      opacity: [0.25, 0.65, 0.25],
+                    }}
+                    transition={{
+                      duration: 3.1,
+                      delay: 0.3,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                  />
+
+                  <motion.path
+                    d="M270 230 L95 365"
+                    animate={{
+                      opacity: [0.25, 0.65, 0.25],
+                    }}
+                    transition={{
+                      duration: 3.4,
+                      delay: 0.5,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                  />
+
+                  <motion.path
+                    d="M270 230 L445 365"
+                    animate={{
+                      opacity: [0.25, 0.65, 0.25],
+                    }}
+                    transition={{
+                      duration: 3,
+                      delay: 0.8,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                  />
+
+                  <motion.path
+                    d="M105 95 L435 95"
+                    animate={{
+                      opacity: [0.15, 0.45, 0.15],
+                    }}
+                    transition={{
+                      duration: 4,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                  />
+
+                  <motion.path
+                    d="M95 365 L445 365"
+                    animate={{
+                      opacity: [0.15, 0.45, 0.15],
+                    }}
+                    transition={{
+                      duration: 4.5,
+                      delay: 0.4,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                  />
+
+                  <motion.path
+                    d="M105 95 L95 365"
+                    animate={{
+                      opacity: [0.12, 0.4, 0.12],
+                    }}
+                    transition={{
+                      duration: 4.2,
+                      delay: 0.6,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                  />
+
+                  <motion.path
+                    d="M435 95 L445 365"
+                    animate={{
+                      opacity: [0.12, 0.4, 0.12],
+                    }}
+                    transition={{
+                      duration: 4.2,
+                      delay: 1,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                  />
+                </g>
+
+                {/* =================================================
+                    SECONDARY NETWORK LINES
+                ================================================== */}
+
+                <g
+                  fill="none"
+                  stroke="#CBFB45"
+                  strokeWidth="1"
+                  strokeDasharray="4 7"
+                  opacity="0.35"
+                >
+                  <path d="M270 230 L105 95" />
+                  <path d="M270 230 L435 95" />
+                  <path d="M270 230 L95 365" />
+                  <path d="M270 230 L445 365" />
+                </g>
+
+                {/* =================================================
+                    DATA PACKETS
+                    Flux continu des données
+                ================================================== */}
+
+                <g
+                  fill="#CBFB45"
+                  filter="url(#networkGlow)"
+                >
+                  {/* Centre → top left */}
+
+                  <motion.circle
+                    r="4"
+                    animate={{
+                      cx: [270, 220, 165, 105],
+                      cy: [230, 190, 145, 95],
+                    }}
+                    transition={{
+                      duration: 2.4,
+                      repeat: Infinity,
+                      ease: "linear",
+                    }}
+                  />
+
+                  {/* Top left → centre */}
+
+                  <motion.circle
+                    r="3"
+                    animate={{
+                      cx: [105, 165, 220, 270],
+                      cy: [95, 145, 190, 230],
+                    }}
+                    transition={{
+                      duration: 2.7,
+                      delay: 1.2,
+                      repeat: Infinity,
+                      ease: "linear",
+                    }}
+                  />
+
+                  {/* Centre → top right */}
+
+                  <motion.circle
+                    r="4"
+                    animate={{
+                      cx: [270, 325, 380, 435],
+                      cy: [230, 185, 140, 95],
+                    }}
+                    transition={{
+                      duration: 2.8,
+                      delay: 0.4,
+                      repeat: Infinity,
+                      ease: "linear",
+                    }}
+                  />
+
+                  {/* Top right → centre */}
+
+                  <motion.circle
+                    r="3"
+                    animate={{
+                      cx: [435, 380, 325, 270],
+                      cy: [95, 140, 185, 230],
+                    }}
+                    transition={{
+                      duration: 2.5,
+                      delay: 1.6,
+                      repeat: Infinity,
+                      ease: "linear",
+                    }}
+                  />
+
+                  {/* Centre → bottom left */}
+
+                  <motion.circle
+                    r="4"
+                    animate={{
+                      cx: [270, 215, 155, 95],
+                      cy: [230, 275, 320, 365],
+                    }}
+                    transition={{
+                      duration: 2.9,
+                      delay: 0.8,
+                      repeat: Infinity,
+                      ease: "linear",
+                    }}
+                  />
+
+                  {/* Bottom left → centre */}
+
+                  <motion.circle
+                    r="3"
+                    animate={{
+                      cx: [95, 155, 215, 270],
+                      cy: [365, 320, 275, 230],
+                    }}
+                    transition={{
+                      duration: 3.1,
+                      delay: 2,
+                      repeat: Infinity,
+                      ease: "linear",
+                    }}
+                  />
+
+                  {/* Centre → bottom right */}
+
+                  <motion.circle
+                    r="4"
+                    animate={{
+                      cx: [270, 330, 390, 445],
+                      cy: [230, 275, 320, 365],
+                    }}
+                    transition={{
+                      duration: 2.6,
+                      delay: 1.1,
+                      repeat: Infinity,
+                      ease: "linear",
+                    }}
+                  />
+
+                  {/* Bottom right → centre */}
+
+                  <motion.circle
+                    r="3"
+                    animate={{
+                      cx: [445, 390, 330, 270],
+                      cy: [365, 320, 275, 230],
+                    }}
+                    transition={{
+                      duration: 3,
+                      delay: 2.2,
+                      repeat: Infinity,
+                      ease: "linear",
+                    }}
+                  />
+
+                  {/* Top left → top right */}
+
+                  <motion.circle
+                    r="2.5"
+                    animate={{
+                      cx: [105, 190, 275, 355, 435],
+                      cy: [95, 95, 95, 95, 95],
+                    }}
+                    transition={{
+                      duration: 4,
+                      delay: 0.7,
+                      repeat: Infinity,
+                      ease: "linear",
+                    }}
+                  />
+
+                  {/* Bottom left → bottom right */}
+
+                  <motion.circle
+                    r="2.5"
+                    animate={{
+                      cx: [95, 180, 270, 355, 445],
+                      cy: [365, 365, 365, 365, 365],
+                    }}
+                    transition={{
+                      duration: 4.5,
+                      delay: 1.4,
+                      repeat: Infinity,
+                      ease: "linear",
+                    }}
+                  />
+                </g>
+
+                {/* =================================================
+                    CENTRAL ROUTER / SWITCH
+                ================================================== */}
+
+                <motion.g
+                  animate={{
+                    scale: [1, 1.04, 1],
+                  }}
+                  transition={{
+                    duration: 2.5,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                  style={{
+                    transformOrigin: "270px 230px",
+                  }}
+                >
+                  <circle
+                    cx="270"
+                    cy="230"
+                    r="46"
+                    fill="rgba(203,251,69,0.06)"
+                    stroke="rgba(203,251,69,0.25)"
+                    strokeWidth="1"
+                  />
+
+                  <circle
+                    cx="270"
+                    cy="230"
+                    r="31"
+                    fill="white"
+                    stroke="rgba(0,0,0,0.10)"
+                    strokeWidth="1.5"
+                  />
+
+                  <circle
+                    cx="270"
+                    cy="230"
+                    r="17"
+                    fill="#CBFB45"
+                    opacity="0.9"
+                    filter="url(#softNetworkGlow)"
+                  />
+
+                  <circle
+                    cx="270"
+                    cy="230"
+                    r="8"
+                    fill="#CBFB45"
+                  />
+
+                  <circle
+                    cx="270"
+                    cy="230"
+                    r="4"
+                    fill="white"
+                  />
+                </motion.g>
+
+                {/* =================================================
+                    NETWORK NODES
+                ================================================== */}
+
+                <g>
+                  {/* Top left */}
+
+                  <motion.g
+                    animate={{
+                      scale: [1, 1.08, 1],
+                    }}
+                    transition={{
+                      duration: 2.7,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                    style={{
+                      transformOrigin: "105px 95px",
+                    }}
+                  >
+                    <circle
+                      cx="105"
+                      cy="95"
+                      r="17"
+                      fill="white"
+                      stroke="rgba(0,0,0,0.10)"
+                      strokeWidth="1.5"
+                    />
+
+                    <circle
+                      cx="105"
+                      cy="95"
+                      r="6"
+                      fill="#CBFB45"
+                    />
+                  </motion.g>
+
+                  {/* Top right */}
+
+                  <motion.g
+                    animate={{
+                      scale: [1, 1.08, 1],
+                    }}
+                    transition={{
+                      duration: 2.7,
+                      delay: 0.4,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                    style={{
+                      transformOrigin: "435px 95px",
+                    }}
+                  >
+                    <circle
+                      cx="435"
+                      cy="95"
+                      r="17"
+                      fill="white"
+                      stroke="rgba(0,0,0,0.10)"
+                      strokeWidth="1.5"
+                    />
+
+                    <circle
+                      cx="435"
+                      cy="95"
+                      r="6"
+                      fill="#CBFB45"
+                    />
+                  </motion.g>
+
+                  {/* Bottom left */}
+
+                  <motion.g
+                    animate={{
+                      scale: [1, 1.08, 1],
+                    }}
+                    transition={{
+                      duration: 2.7,
+                      delay: 0.8,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                    style={{
+                      transformOrigin: "95px 365px",
+                    }}
+                  >
+                    <circle
+                      cx="95"
+                      cy="365"
+                      r="17"
+                      fill="white"
+                      stroke="rgba(0,0,0,0.10)"
+                      strokeWidth="1.5"
+                    />
+
+                    <circle
+                      cx="95"
+                      cy="365"
+                      r="6"
+                      fill="#CBFB45"
+                    />
+                  </motion.g>
+
+                  {/* Bottom right */}
+
+                  <motion.g
+                    animate={{
+                      scale: [1, 1.08, 1],
+                    }}
+                    transition={{
+                      duration: 2.7,
+                      delay: 1.2,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                    style={{
+                      transformOrigin: "445px 365px",
+                    }}
+                  >
+                    <circle
+                      cx="445"
+                      cy="365"
+                      r="17"
+                      fill="white"
+                      stroke="rgba(0,0,0,0.10)"
+                      strokeWidth="1.5"
+                    />
+
+                    <circle
+                      cx="445"
+                      cy="365"
+                      r="6"
+                      fill="#CBFB45"
+                    />
+                  </motion.g>
+                </g>
+
+                {/* =================================================
+                    OUTER SIGNAL RINGS
+                ================================================== */}
+
+                <motion.circle
+                  cx="270"
+                  cy="230"
+                  r="65"
+                  fill="none"
+                  stroke="#CBFB45"
+                  strokeWidth="1"
+                  opacity="0.25"
+                  animate={{
+                    r: [45, 75, 45],
+                    opacity: [0.35, 0, 0.35],
+                  }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: "easeOut",
+                  }}
+                />
+
+                <motion.circle
+                  cx="270"
+                  cy="230"
+                  r="85"
+                  fill="none"
+                  stroke="#CBFB45"
+                  strokeWidth="1"
+                  opacity="0.15"
+                  animate={{
+                    r: [55, 95, 55],
+                    opacity: [0.25, 0, 0.25],
+                  }}
+                  transition={{
+                    duration: 3,
+                    delay: 1,
+                    repeat: Infinity,
+                    ease: "easeOut",
+                  }}
+                />
+              </svg>
+            </motion.div>
 
             {/* =================================================
                 CURRENTLY CARD
@@ -689,8 +1253,8 @@ export default function Hero() {
               }}
               className="
                 absolute
-                right-0
-                top-[18%]
+                right-[4%]
+                top-[16%]
                 z-20
                 hidden
                 w-[180px]
@@ -703,8 +1267,8 @@ export default function Hero() {
                 backdrop-blur-xl
                 sm:block
                 sm:w-[190px]
-                lg:translate-y-6
-                lg:-translate-x-2
+                lg:right-[2%]
+                lg:top-[18%]
               "
             >
               <p
@@ -753,8 +1317,8 @@ export default function Hero() {
               }}
               className="
                 absolute
-                left-[8%]
-                top-[24%]
+                left-[14%]
+                top-[28%]
                 z-20
                 h-2.5
                 w-2.5
@@ -763,6 +1327,51 @@ export default function Hero() {
                 shadow-[0_0_25px_rgba(203,251,69,0.8)]
                 sm:h-3
                 sm:w-3
+              "
+            />
+
+            {/* =================================================
+                DECORATIVE LINES
+            ================================================== */}
+
+            <div
+              className="
+                pointer-events-none
+                absolute
+                bottom-[18%]
+                left-[18%]
+                h-px
+                w-[120px]
+                bg-black/10
+                sm:w-[160px]
+                lg:w-[190px]
+              "
+            />
+
+            <div
+              className="
+                pointer-events-none
+                absolute
+                right-[14%]
+                bottom-[24%]
+                h-[80px]
+                w-px
+                bg-black/10
+                sm:h-[110px]
+                lg:h-[140px]
+              "
+            />
+
+            <div
+              className="
+                pointer-events-none
+                absolute
+                left-[18%]
+                bottom-[18%]
+                h-1.5
+                w-1.5
+                rounded-full
+                bg-black/20
               "
             />
           </motion.div>

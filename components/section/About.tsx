@@ -132,7 +132,6 @@ const personalFaq = [
       "The best approach is to first discuss the objective, requirements and expected result. From there, we can define the technical approach, timeline and collaboration format.",
   },
 ];
-
 export default function About() {
   return (
     <section
@@ -142,14 +141,10 @@ export default function About() {
         w-full
         overflow-hidden
         bg-white
-        px-5
         py-24
         text-black
-        sm:px-8
         sm:py-32
-        lg:px-12
         lg:py-40
-        xl:px-16
       "
     >
       {/* =====================================================
@@ -203,7 +198,21 @@ export default function About() {
         "
       />
 
-      <div className="relative z-10 mx-auto max-w-[1440px]">
+      {/* CONTENEUR ALIGNÉ AVEC LE HERO */}
+      <div
+        className="
+          relative
+          z-10
+          mx-auto
+          w-full
+          max-w-[1440px]
+          px-5
+          sm:px-8
+          lg:px-12
+          xl:px-16
+        "
+      >
+
 
         {/* =====================================================
             ABOUT INTRODUCTION
