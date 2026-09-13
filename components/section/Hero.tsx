@@ -281,6 +281,7 @@ export default function Hero() {
                   font-semibold
                   leading-[0.82]
                   tracking-[-0.075em]
+                  text-gray-400
                   sm:whitespace-nowrap
                   sm:text-[clamp(4rem,8vw,8.5rem)]
                 "
@@ -451,7 +452,7 @@ export default function Hero() {
                   justify-center
                   gap-3
                   rounded-full
-                  bg-black
+                  bg-gray-400
                   px-5
                   py-3
                   text-[13px]
@@ -484,8 +485,7 @@ export default function Hero() {
               {/* CV */}
 
               <a
-                href="/cv.pdf"
-                download
+                href="/cv"
                 className="
                   group
                   flex
@@ -649,7 +649,7 @@ export default function Hero() {
               "
             >
               <img
-                src="/profile3.png"
+                src="/Profil.jpeg"
                 alt="Nicolas Gbaguidi"
                 className="
                   relative
@@ -659,16 +659,17 @@ export default function Hero() {
                   max-w-[92%]
                   object-contain
                   object-bottom
-                  grayscale-[20%]
+                  -grayscale-[20%]
                   drop-shadow-[0_18px_32px_rgba(203,251,69,0.22)]
                   transition-transform
                   duration-700
 
-                  sm:max-h-[620px]
-                  sm:max-w-[90%]
+                  sm:max-h-[600px]
+                  sm:max-w-[80%]
 
-                  lg:max-h-[1000px]
+                  lg:max-h-[500px]
                   lg:max-w-none
+                  rounded-[20px]
                 "
               />
             </div>
@@ -893,252 +894,6 @@ export default function Hero() {
             </a>
           </div>
         </motion.div>
-      </div>
-
-      {/* =====================================================
-          SKILLS MARQUEE
-      ====================================================== */}
-
-      <div
-        className="
-          relative
-          flex
-          min-h-[120px]
-          items-end
-          justify-center
-        "
-      >
-        {/* LABEL */}
-
-        <div
-          className="
-            absolute
-            bottom-[86px]
-            left-1/2
-            flex
-            -translate-x-1/2
-            items-center
-            gap-2
-            whitespace-nowrap
-          "
-        >
-          <span
-            className="
-              h-1.5
-              w-1.5
-              shrink-0
-              rounded-full
-              bg-[#CBFB45]
-              shadow-[0_0_8px_rgba(203,251,69,0.8)]
-            "
-          />
-
-          <span
-            className="
-              text-[9px]
-              font-semibold
-              uppercase
-              tracking-[0.25em]
-              text-black/40
-            "
-          >
-            Technical Skills
-          </span>
-        </div>
-
-        {/* =================================================
-            SKILLS BAR
-        ================================================== */}
-
-        <div
-          className="
-            absolute
-            bottom-6
-            left-1/2
-            z-30
-            flex
-            h-14
-            w-[calc(100%-2rem)]
-            max-w-[1200px]
-            -translate-x-1/2
-            overflow-hidden
-            rounded-full
-            border
-            border-black/10
-            bg-[#F7F7F4]/95
-            shadow-[0_8px_30px_rgba(0,0,0,0.05)]
-            backdrop-blur-md
-            sm:w-[calc(100%-3rem)]
-            lg:w-[calc(100%-5rem)]
-          "
-        >
-          {/* SCROLLING SKILLS */}
-
-          <div
-            className="
-              relative
-              min-w-0
-              flex-1
-              overflow-hidden
-            "
-          >
-            <motion.div
-              animate={controls}
-              className="
-                flex
-                h-full
-                w-max
-                items-center
-              "
-            >
-              {[...skills, ...skills].map((skill, index) => (
-                <div
-                  key={`${skill}-${index}`}
-                  className="
-                    flex
-                    shrink-0
-                    items-center
-                  "
-                >
-                  <span
-                    className="
-                      px-5
-                      text-xs
-                      font-medium
-                      tracking-tight
-                      text-black/65
-                      transition-colors
-                      duration-300
-                      hover:text-black
-                      sm:px-6
-                      sm:text-sm
-                    "
-                  >
-                    {skill}
-                  </span>
-
-                  <span
-                    className="
-                      h-1.5
-                      w-1.5
-                      shrink-0
-                      rounded-full
-                      bg-[#CBFB45]
-                      shadow-[0_0_8px_rgba(203,251,69,0.7)]
-                    "
-                  />
-                </div>
-              ))}
-            </motion.div>
-
-            {/* FADE LEFT */}
-
-            <div
-              className="
-                pointer-events-none
-                absolute
-                inset-y-0
-                left-0
-                z-10
-                w-8
-                bg-gradient-to-r
-                from-[#F7F7F4]
-                to-transparent
-                sm:w-10
-              "
-            />
-
-            {/* FADE RIGHT */}
-
-            <div
-              className="
-                pointer-events-none
-                absolute
-                inset-y-0
-                right-0
-                z-10
-                w-8
-                bg-gradient-to-l
-                from-[#F7F7F4]
-                to-transparent
-                sm:w-10
-              "
-            />
-          </div>
-
-          {/* =================================================
-              CONTROLS
-          ================================================== */}
-
-          <div
-            className="
-              relative
-              z-20
-              hidden
-              h-full
-              shrink-0
-              items-center
-              gap-2
-              border-l
-              border-black/10
-              bg-[#F7F7F4]
-              px-3
-              md:flex
-            "
-          >
-            <button
-              type="button"
-              onClick={moveRight}
-              aria-label="Scroll skills left"
-              className="
-                flex
-                h-9
-                w-9
-                shrink-0
-                items-center
-                justify-center
-                rounded-full
-                border
-                border-black/10
-                bg-white
-                text-black
-                transition-all
-                duration-300
-                hover:border-black
-                hover:bg-black
-                hover:text-white
-              "
-            >
-              <ChevronLeft size={16} />
-            </button>
-
-            <button
-              type="button"
-              onClick={moveLeft}
-              aria-label="Scroll skills right"
-              className="
-                flex
-                h-9
-                w-9
-                shrink-0
-                items-center
-                justify-center
-                rounded-full
-                border
-                border-black/10
-                bg-white
-                text-black
-                transition-all
-                duration-300
-                hover:border-black
-                hover:bg-black
-                hover:text-white
-              "
-            >
-              <ChevronRight size={16} />
-            </button>
-          </div>
-        </div>
       </div>
     </section>
   );

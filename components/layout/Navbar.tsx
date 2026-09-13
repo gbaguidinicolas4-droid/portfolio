@@ -11,10 +11,9 @@ import {
 
 const navLinks = [
   { name: "About", href: "#about" },
-  { name: "Expertise", href: "#expertise" },
-  { name: "Projects", href: "#projects" },
-  { name: "Certifications", href: "#certifications" },
   { name: "Journey", href: "#journey" },
+   { name: "Comment", href: "#comments" },
+   { name: "Projects", href: "/Projects" },
 ];
 
 export default function Navbar() {
@@ -193,6 +192,7 @@ export default function Navbar() {
               box-border
               px-5
               sm:px-7
+               lg:-translate-x-7
 
               ${
                 scrolled
@@ -223,6 +223,8 @@ export default function Navbar() {
                 shrink-0
                 items-center
                 gap-3
+               
+             
               "
               aria-label="Nicolas Gbaguidi - Home"
             >
@@ -250,6 +252,7 @@ export default function Navbar() {
                   group-hover:border-[#CBFB45]/50
                   group-hover:bg-[#CBFB45]
                   group-hover:text-black
+                  
                 "
               >
                 NG

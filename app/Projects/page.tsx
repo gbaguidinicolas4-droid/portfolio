@@ -1,7 +1,8 @@
 "use client";
 
 import { motion, type Variants } from "framer-motion";
-import { ArrowUpRight, ExternalLink } from "lucide-react";
+import { ArrowUpRight, ExternalLink ,  ArrowLeft,} from "lucide-react";
+import Link from "next/link";
 
 const projects = [
   {
@@ -102,14 +103,32 @@ export default function Projects() {
         overflow-hidden
         bg-white
         px-5
-        py-28
+      
         text-black
         sm:px-8
-        sm:py-36
-        lg:px-12
+        
+        lg:px-5
         xl:px-16
       "
     >
+           {/* HEADER */}
+    <header className="sticky top-0 z-50 mx-auto flex w-full max-w-[1440px] items-center justify-between px-6 py-10 backdrop-blur-md bg-white/70 sm:px-10 lg:px-16">
+        <Link
+          href="/"
+          className="group flex items-center gap-2 text-sm font-medium"
+        >
+          <ArrowLeft
+            size={17}
+            className="transition-transform duration-300 group-hover:-translate-x-1"
+          />
+          Back to home
+        </Link>
+
+        <span className="text-xs font-medium uppercase tracking-[0.2em] text-black/40">
+          Projects
+        </span>
+      </header>
+     
       {/* =====================================================
           BACKGROUND GLOW
       ====================================================== */}
@@ -136,6 +155,7 @@ export default function Projects() {
           blur-[130px]
         "
       />
+      
 
       <motion.div
         animate={{
