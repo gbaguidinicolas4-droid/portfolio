@@ -1,97 +1,37 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import { motion, useAnimation } from "framer-motion";
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import {
   ArrowDown,
   ArrowUpRight,
   Download,
 } from "lucide-react";
 
-const skills = [
-  "React",
-  "Next.js",
-  "TypeScript",
-  "JavaScript",
-  "Tailwind CSS",
-  "Framer Motion",
-  "REST API",
-  "Git",
-  "GitHub",
-  "Linux",
-  "Cisco",
-  "TCP/IP",
-  "Networking",
-  "Telecommunications",
-];
-
 export default function Hero() {
-  const controls = useAnimation();
-  const animationRef = useRef<ReturnType<typeof controls.start> | null>(null);
+  // Détecte les petits écrans pour ne pas monter l'illustration animée
+  // (réservée à sm et plus) sur les téléphones.
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    animationRef.current = controls.start({
-      x: ["0%", "-50%"],
-      transition: {
-        duration: 35,
-        ease: "linear",
-        repeat: Infinity,
-      },
-    });
+    const mediaQuery = window.matchMedia("(max-width: 639px)");
+    const updateIsMobile = () => setIsMobile(mediaQuery.matches);
+
+    updateIsMobile();
+    mediaQuery.addEventListener("change", updateIsMobile);
 
     return () => {
-      controls.stop();
+      mediaQuery.removeEventListener("change", updateIsMobile);
     };
-  }, [controls]);
-
-  const moveLeft = async () => {
-    controls.stop();
-
-    await controls.start({
-      x: "-20%",
-      transition: {
-        duration: 0.8,
-        ease: [0.22, 1, 0.36, 1],
-      },
-    });
-
-    animationRef.current = controls.start({
-      x: ["-20%", "-50%"],
-      transition: {
-        duration: 30,
-        ease: "linear",
-        repeat: Infinity,
-      },
-    });
-  };
-
-  const moveRight = async () => {
-    controls.stop();
-
-    await controls.start({
-      x: "0%",
-      transition: {
-        duration: 0.8,
-        ease: [0.22, 1, 0.36, 1],
-      },
-    });
-
-    animationRef.current = controls.start({
-      x: ["0%", "-50%"],
-      transition: {
-        duration: 35,
-        ease: "linear",
-        repeat: Infinity,
-      },
-    });
-  };
+  }, []);
 
   return (
     <section
       id="home"
       className="
         relative
-        min-h-screen
+        min-h-[100svh]
+        sm:min-h-screen
         w-full
         overflow-hidden
         bg-white
@@ -107,7 +47,8 @@ export default function Hero() {
         className="
           mx-auto
           flex
-          min-h-screen
+          min-h-[100svh]
+          sm:min-h-screen
           w-full
           max-w-[1440px]
           flex-col
@@ -442,7 +383,7 @@ export default function Hero() {
               {/* PROJECTS */}
 
               <a
-                href="#projects"
+                href="/Projects"
                 className="
                   group
                   flex
@@ -533,6 +474,7 @@ export default function Hero() {
               RIGHT SIDE / DESKTOP VISUAL AREA
           ================================================== */}
 
+          {!isMobile && (
           <motion.div
             initial={{
               opacity: 0,
@@ -1375,6 +1317,7 @@ export default function Hero() {
               "
             />
           </motion.div>
+          )}
         </div>
 
         {/* =====================================================
