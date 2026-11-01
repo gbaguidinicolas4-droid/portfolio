@@ -1,6 +1,7 @@
 
 "use client";
 
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import {
   ArrowUpRight,
@@ -133,6 +134,26 @@ const personalFaq = [
   },
 ];
 export default function About() {
+  // Les animations coûteuses sont désactivées uniquement sur les petits écrans.
+  // Le rendu et les animations d'origine sont conservés sur ordinateur.
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 639px)");
+    const updateIsMobile = () => setIsMobile(mediaQuery.matches);
+
+    updateIsMobile();
+
+    if (mediaQuery.addEventListener) {
+      mediaQuery.addEventListener("change", updateIsMobile);
+      return () => mediaQuery.removeEventListener("change", updateIsMobile);
+    }
+
+    // Compatibilité avec les anciens navigateurs mobiles.
+    mediaQuery.addListener(updateIsMobile);
+    return () => mediaQuery.removeListener(updateIsMobile);
+  }, []);
+
   return (
     <section
       id="about"
@@ -152,15 +173,15 @@ export default function About() {
       ====================================================== */}
 
       <motion.div
-        animate={{
+        animate={isMobile ? undefined : ({
           scale: [1, 1.12, 1],
           opacity: [0.12, 0.2, 0.12],
-        }}
-        transition={{
+        }) }
+        transition={isMobile ? { duration: 0 } : ({
           duration: 8,
           repeat: Infinity,
           ease: "easeInOut",
-        }}
+        }) }
         className="
           pointer-events-none
           absolute
@@ -175,16 +196,16 @@ export default function About() {
       />
 
       <motion.div
-        animate={{
+        animate={isMobile ? undefined : ({
           scale: [1, 1.08, 1],
           opacity: [0.08, 0.15, 0.08],
-        }}
-        transition={{
+        }) }
+        transition={isMobile ? { duration: 0 } : ({
           duration: 10,
           repeat: Infinity,
           ease: "easeInOut",
           delay: 1,
-        }}
+        }) }
         className="
           pointer-events-none
           absolute
@@ -219,26 +240,26 @@ export default function About() {
         ====================================================== */}
 
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={isMobile ? false : ({ opacity: 0, y: 30 }) }
+          whileInView={isMobile ? undefined : ({ opacity: 1, y: 0 }) }
           viewport={{ once: true, amount: 0.3 }}
-          transition={{
+          transition={isMobile ? { duration: 0 } : ({
             duration: 0.8,
             ease: [0.22, 1, 0.36, 1],
-          }}
+          }) }
           className="mb-20 sm:mb-24 lg:mb-28"
         >
           <div className="mb-7 flex items-center gap-3">
             <motion.span
-              initial={{ scale: 0 }}
-              whileInView={{ scale: 1 }}
+              initial={isMobile ? false : ({ scale: 0 }) }
+              whileInView={isMobile ? undefined : ({ scale: 1 }) }
               viewport={{ once: true }}
-              transition={{
+              transition={isMobile ? { duration: 0 } : ({
                 duration: 0.5,
                 delay: 0.1,
                 type: "spring",
                 stiffness: 300,
-              }}
+              }) }
               className="
                 h-2
                 w-2
@@ -265,13 +286,13 @@ export default function About() {
 
           <div className="max-w-[1050px] overflow-hidden">
             <motion.h2
-              initial={{ y: "100%" }}
-              whileInView={{ y: 0 }}
+              initial={isMobile ? false : ({ y: "100%" }) }
+              whileInView={isMobile ? undefined : ({ y: 0 }) }
               viewport={{ once: true }}
-              transition={{
+              transition={isMobile ? { duration: 0 } : ({
                 duration: 1,
                 ease: [0.22, 1, 0.36, 1],
-              }}
+              }) }
               className="
                 text-[clamp(3rem,8vw,7.5rem)]
                 font-semibold
@@ -286,13 +307,13 @@ export default function About() {
           </div>
 
           <motion.div
-            initial={{ opacity: 0, y: 25 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={isMobile ? false : ({ opacity: 0, y: 25 }) }
+            whileInView={isMobile ? undefined : ({ opacity: 1, y: 0 }) }
             viewport={{ once: true }}
-            transition={{
+            transition={isMobile ? { duration: 0 } : ({
               duration: 0.8,
               delay: 0.25,
-            }}
+            }) }
             className="
               mt-8
               grid
@@ -341,13 +362,13 @@ export default function About() {
         ====================================================== */}
 
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={isMobile ? false : ({ opacity: 0, y: 50 }) }
+          whileInView={isMobile ? undefined : ({ opacity: 1, y: 0 }) }
           viewport={{ once: true, amount: 0.2 }}
-          transition={{
+          transition={isMobile ? { duration: 0 } : ({
             duration: 0.9,
             ease: [0.22, 1, 0.36, 1],
-          }}
+          }) }
           className="
             relative
             mb-24
@@ -361,15 +382,15 @@ export default function About() {
           "
         >
           <motion.div
-            animate={{
+            animate={isMobile ? undefined : ({
               x: ["-20%", "20%", "-20%"],
               y: ["0%", "10%", "0%"],
-            }}
-            transition={{
+            }) }
+            transition={isMobile ? { duration: 0 } : ({
               duration: 12,
               repeat: Infinity,
               ease: "easeInOut",
-            }}
+            }) }
             className="
               pointer-events-none
               absolute
@@ -423,10 +444,10 @@ export default function About() {
 
         <div className="mb-24 sm:mb-28">
           <motion.div
-            initial={{ opacity: 0, y: 25 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={isMobile ? false : ({ opacity: 0, y: 25 }) }
+            whileInView={isMobile ? undefined : ({ opacity: 1, y: 0 }) }
             viewport={{ once: true, amount: 0.25 }}
-            transition={{ duration: 0.7 }}
+            transition={isMobile ? { duration: 0 } : ({ duration: 0.7 }) }
             className="mb-12"
           >
             <div className="mb-4 flex items-center gap-3">
@@ -469,26 +490,26 @@ export default function About() {
   return (
    <motion.article
   key={group.number}
-  initial={{
+  initial={isMobile ? false : ({
     opacity: 0,
     y: 45,
-  }}
-  whileInView={{
+  }) }
+  whileInView={isMobile ? undefined : ({
     opacity: 1,
     y: 0,
-  }}
+  }) }
   viewport={{
     once: true,
     amount: 0.15,
   }}
-  transition={{
+  transition={isMobile ? { duration: 0 } : ({
     duration: 0.7,
     delay: index * 0.1,
     ease: [0.22, 1, 0.36, 1],
-  }}
-  whileHover={{
+  }) }
+  whileHover={isMobile ? undefined : ({
     y: -7,
-  }}
+  }) }
   className="
     group
     relative
@@ -529,22 +550,22 @@ export default function About() {
   ================================================== */}
 
   <motion.div
-    initial={{
+    initial={isMobile ? false : ({
       opacity: 0,
       scale: 0.97,
-    }}
-    whileInView={{
+    }) }
+    whileInView={isMobile ? undefined : ({
       opacity: 1,
       scale: 1,
-    }}
+    }) }
     viewport={{
       once: true,
     }}
-    transition={{
+    transition={isMobile ? { duration: 0 } : ({
       duration: 0.8,
       delay: index * 0.1,
       ease: [0.22, 1, 0.36, 1],
-    }}
+    }) }
     className="
       relative
       h-[300px]
@@ -593,13 +614,13 @@ export default function About() {
         object-center
         drop-shadow-[0_25px_35px_rgba(0,0,0,0.12)]
       "
-      whileHover={{
+      whileHover={isMobile ? undefined : ({
         scale: 1.04,
-      }}
-      transition={{
+      }) }
+      transition={isMobile ? { duration: 0 } : ({
         duration: 0.45,
         ease: "easeOut",
-      }}
+      }) }
     />
   </motion.div>
 
@@ -615,14 +636,14 @@ export default function About() {
 
     <div className="flex items-start justify-between">
       <motion.div
-        whileHover={{
+        whileHover={isMobile ? undefined : ({
           rotate: 8,
           scale: 1.08,
-        }}
-        transition={{
+        }) }
+        transition={isMobile ? { duration: 0 } : ({
           type: "spring",
           stiffness: 300,
-        }}
+        }) }
         className="
           flex
           h-12
@@ -638,9 +659,9 @@ export default function About() {
       </motion.div>
 
       <motion.div
-        whileHover={{
+        whileHover={isMobile ? undefined : ({
           rotate: 45,
-        }}
+        }) }
         className="
           flex
           h-9
@@ -749,10 +770,10 @@ export default function About() {
         ====================================================== */}
 
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={isMobile ? false : ({ opacity: 0, y: 40 }) }
+          whileInView={isMobile ? undefined : ({ opacity: 1, y: 0 }) }
           viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.8 }}
+          transition={isMobile ? { duration: 0 } : ({ duration: 0.8 }) }
           className="
             relative
             mb-24
@@ -799,24 +820,24 @@ export default function About() {
               ].map((technology, index) => (
                 <motion.span
                   key={technology}
-                  initial={{
+                  initial={isMobile ? false : ({
                     opacity: 0,
                     scale: 0.9,
-                  }}
-                  whileInView={{
+                  }) }
+                  whileInView={isMobile ? undefined : ({
                     opacity: 1,
                     scale: 1,
-                  }}
+                  }) }
                   viewport={{
                     once: true,
                   }}
-                  transition={{
+                  transition={isMobile ? { duration: 0 } : ({
                     delay: index * 0.04,
-                  }}
-                  whileHover={{
+                  }) }
+                  whileHover={isMobile ? undefined : ({
                     y: -3,
                     scale: 1.03,
-                  }}
+                  }) }
                   className="
                     cursor-default
                     rounded-full
@@ -846,10 +867,10 @@ export default function About() {
 
         <div className="mb-24">
           <motion.div
-            initial={{ opacity: 0, y: 25 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={isMobile ? false : ({ opacity: 0, y: 25 }) }
+            whileInView={isMobile ? undefined : ({ opacity: 1, y: 0 }) }
             viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
+            transition={isMobile ? { duration: 0 } : ({ duration: 0.7 }) }
             className="mb-10"
           >
             <div className="mb-4 flex items-center gap-3">
@@ -881,25 +902,25 @@ export default function About() {
               return (
                 <motion.div
                   key={item.title}
-                  initial={{
+                  initial={isMobile ? false : ({
                     opacity: 0,
                     y: 30,
-                  }}
-                  whileInView={{
+                  }) }
+                  whileInView={isMobile ? undefined : ({
                     opacity: 1,
                     y: 0,
-                  }}
+                  }) }
                   viewport={{
                     once: true,
                     amount: 0.2,
                   }}
-                  transition={{
+                  transition={isMobile ? { duration: 0 } : ({
                     duration: 0.6,
                     delay: index * 0.12,
-                  }}
-                  whileHover={{
+                  }) }
+                  whileHover={isMobile ? undefined : ({
                     y: -6,
-                  }}
+                  }) }
                   className="
                     rounded-[26px]
                     border
@@ -931,10 +952,10 @@ export default function About() {
         ====================================================== */}
 
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          initial={isMobile ? false : ({ opacity: 0 }) }
+          whileInView={isMobile ? undefined : ({ opacity: 1 }) }
           viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.8 }}
+          transition={isMobile ? { duration: 0 } : ({ duration: 0.8 }) }
           className="mb-24"
         >
           <div className="mb-10">
@@ -992,20 +1013,20 @@ export default function About() {
               return (
                 <motion.div
                   key={item.title}
-                  initial={{
+                  initial={isMobile ? false : ({
                     opacity: 0,
                     y: 25,
-                  }}
-                  whileInView={{
+                  }) }
+                  whileInView={isMobile ? undefined : ({
                     opacity: 1,
                     y: 0,
-                  }}
+                  }) }
                   viewport={{
                     once: true,
                   }}
-                  transition={{
+                  transition={isMobile ? { duration: 0 } : ({
                     delay: index * 0.1,
-                  }}
+                  }) }
                   className="
                     rounded-[24px]
                     border
@@ -1037,10 +1058,10 @@ export default function About() {
 
         <div className="mb-24">
           <motion.div
-            initial={{ opacity: 0, y: 25 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={isMobile ? false : ({ opacity: 0, y: 25 }) }
+            whileInView={isMobile ? undefined : ({ opacity: 1, y: 0 }) }
             viewport={{ once: true, amount: 0.25 }}
-            transition={{ duration: 0.7 }}
+            transition={isMobile ? { duration: 0 } : ({ duration: 0.7 }) }
             className="mb-10"
           >
             <div className="mb-4 flex items-center gap-3">
@@ -1080,22 +1101,22 @@ export default function About() {
             {personalFaq.map((item, index) => (
               <motion.div
                 key={item.question}
-                initial={{
+                initial={isMobile ? false : ({
                   opacity: 0,
                   y: 20,
-                }}
-                whileInView={{
+                }) }
+                whileInView={isMobile ? undefined : ({
                   opacity: 1,
                   y: 0,
-                }}
+                }) }
                 viewport={{
                   once: true,
                   amount: 0.15,
                 }}
-                transition={{
+                transition={isMobile ? { duration: 0 } : ({
                   duration: 0.55,
                   delay: index * 0.06,
-                }}
+                }) }
                 className="group border-b border-black/10"
               >
                 <details className="group/details">
@@ -1165,19 +1186,19 @@ export default function About() {
         ====================================================== */}
 
         <motion.div
-          initial={{ opacity: 0, scale: 0.96 }}
-          whileInView={{
+          initial={isMobile ? false : ({ opacity: 0, scale: 0.96 }) }
+          whileInView={isMobile ? undefined : ({
             opacity: 1,
             scale: 1,
-          }}
+          }) }
           viewport={{
             once: true,
             amount: 0.25,
           }}
-          transition={{
+          transition={isMobile ? { duration: 0 } : ({
             duration: 0.9,
             ease: [0.22, 1, 0.36, 1],
-          }}
+          }) }
           className="
             relative
             overflow-hidden
@@ -1193,14 +1214,14 @@ export default function About() {
           "
         >
           <motion.div
-            animate={{
+            animate={isMobile ? undefined : ({
               rotate: [0, 360],
-            }}
-            transition={{
+            }) }
+            transition={isMobile ? { duration: 0 } : ({
               duration: 25,
               repeat: Infinity,
               ease: "linear",
-            }}
+            }) }
             className="
               pointer-events-none
               absolute
